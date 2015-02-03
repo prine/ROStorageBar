@@ -13,6 +13,8 @@
 		CB0D1AA21A812C3500FC80A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0D1AA11A812C3500FC80A8 /* Images.xcassets */; };
 		CB0D1AA51A812C3500FC80A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0D1AA31A812C3500FC80A8 /* LaunchScreen.xib */; };
 		CB0D1AB11A812C3500FC80A8 /* ROStorageBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0D1AB01A812C3500FC80A8 /* ROStorageBarTests.swift */; };
+		CB0D1ABB1A812C5800FC80A8 /* ROStorageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0D1ABA1A812C5800FC80A8 /* ROStorageBar.swift */; };
+		CB0D1ABD1A812C6600FC80A8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0D1ABC1A812C6600FC80A8 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		CB0D1AAA1A812C3500FC80A8 /* ROStorageBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROStorageBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0D1AAF1A812C3500FC80A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB0D1AB01A812C3500FC80A8 /* ROStorageBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROStorageBarTests.swift; sourceTree = "<group>"; };
+		CB0D1ABA1A812C5800FC80A8 /* ROStorageBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ROStorageBar.swift; sourceTree = "<group>"; };
+		CB0D1ABC1A812C6600FC80A8 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 			children = (
 				CB0D1A9A1A812C3500FC80A8 /* AppDelegate.swift */,
 				CB0D1A9C1A812C3500FC80A8 /* ViewController.swift */,
+				CB0D1ABA1A812C5800FC80A8 /* ROStorageBar.swift */,
+				CB0D1ABC1A812C6600FC80A8 /* Helper.swift */,
 				CB0D1A9E1A812C3500FC80A8 /* Main.storyboard */,
 				CB0D1AA11A812C3500FC80A8 /* Images.xcassets */,
 				CB0D1AA31A812C3500FC80A8 /* LaunchScreen.xib */,
@@ -214,6 +220,8 @@
 			files = (
 				CB0D1A9D1A812C3500FC80A8 /* ViewController.swift in Sources */,
 				CB0D1A9B1A812C3500FC80A8 /* AppDelegate.swift in Sources */,
+				CB0D1ABB1A812C5800FC80A8 /* ROStorageBar.swift in Sources */,
+				CB0D1ABD1A812C6600FC80A8 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
