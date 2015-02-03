@@ -23,6 +23,6 @@ The size of the ROStorageBar is defined by the size of the UIView. Therefore als
 The helper is only used for easier color creation and can be easily left out. I left it in because maybe someone else can also use the hex to UIColor conversion.
 
 Here a short example:
-```
+```Swift
 var color = Helper.colorFromHexString("#A8DBA8")
 ```
