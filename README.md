@@ -1,7 +1,7 @@
 # ROStorageBar
 Dynamic Storage Bar (a là iTunes Usage Bar) written in Swift
 
-![Example](http://prine.ch//ROStorageBarExample.png "Screenshot of the ROStorageBar")
+![Example](http://prine.ch//ROStorageBarExample_v1.0.1.png "Screenshot of the ROStorageBar")
 
 ## How to use
 The usage is really straighforward. Include the ROStorageBar.swift and the Helper.swift file into your project. Create a UIView in the Storyboard and set the class to ROStorageBar.
