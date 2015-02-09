@@ -3,6 +3,8 @@ Dynamic Storage Bar (a là iTunes Usage Bar) written in Swift
 
 ![Example](http://prine.ch//ROStorageBar.png "Screenshot of the ROStorageBar")
 
+It is also possible to add captions underneath the bar.
+
 ![ExampleWithCaptions](http://prine.ch//ROStorageBar_caption.png "Screenshot of the ROStorageBar with Captions")
 
 ## How to use
