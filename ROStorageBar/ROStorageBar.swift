@@ -137,6 +137,10 @@ class ROStorageBar : UIView {
         self.setNeedsDisplay()
     }
     
+    func emptyStorageBar() {
+        self.storageBarValues.removeAll(keepCapacity: false)
+    }
+    
     struct ROStorageBarValue {
         var value:Float
         var title:String
