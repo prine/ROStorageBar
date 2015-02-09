@@ -10,15 +10,34 @@ import UIKit
 
 class ROStorageBar : UIView {
     
-    var storageBarValues = [ROStorageBarValue]()
-    var totalSum:Float = 0.0
+    private var storageBarValues = [ROStorageBarValue]()
+    private var totalSum:Float = 0.0
+    
     var borderWidth:Float = 1.0
-    var borderColor:UIColor = Helper.colorFromHexString("#333333")
-    var displayInfos:Bool = true
+    var borderColor:UIColor = UIColor.darkGrayColor()
+    var titleFontSize = 10.0
+    var valueFontSize = 10.0
+    var displayTitle:Bool = true
+    var displayValue:Bool = true
+    var numberFormatter:NSNumberFormatter
     var unit:String?
     
     override init() {
+        // Initilaize the default number formatter
+        numberFormatter = NSNumberFormatter()
+        numberFormatter.minimumIntegerDigits = 1
+        numberFormatter.maximumFractionDigits = 1
+        
         super.init()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        // Initilaize the default number formatter
+        numberFormatter = NSNumberFormatter()
+        numberFormatter.minimumIntegerDigits = 1
+        numberFormatter.maximumFractionDigits = 1
+        
+        super.init(coder:aDecoder)
     }
     
     override func drawRect(rect: CGRect) {
@@ -48,54 +67,68 @@ class ROStorageBar : UIView {
             
             currentX += (storageBarValue.value * scale)
             
-            if displayInfos {
-                self.drawString(storageBarValue, rect: rectangle)
-            }
+            self.drawString(storageBarValue, rect: rectangle)
         }
     }
     
     func drawString(storageBarValue:ROStorageBarValue, rect:CGRect) {
         
-        let fontTitle = UIFont(name: "Helvetica Bold", size: 10.0)
-        let fontValue = UIFont(name: "Helvetica Light", size: 10.0)
+        let fontTitle = UIFont(name: "Helvetica Bold", size: CGFloat(self.titleFontSize))
+        let fontValue = UIFont(name: "Helvetica Light", size: CGFloat(self.valueFontSize))
         
         let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as NSMutableParagraphStyle
         textStyle.alignment = NSTextAlignment.Center
-        let textColor = Helper.colorFromHexString("#000000")
+        let textColor = UIColor.blackColor()
         
-        // Draw title
-        if let actualFont = fontTitle {
-            let textFontAttributes = [
-                NSFontAttributeName: actualFont,
-                NSForegroundColorAttributeName: textColor,
-                NSParagraphStyleAttributeName: textStyle
-            ]
+        var amountOfLineBreaks:Int?
+        
+        if displayTitle {
+            if let actualFont = fontTitle {
+                let textFontAttributes = [
+                    NSFontAttributeName: actualFont,
+                    NSForegroundColorAttributeName: textColor,
+                    NSParagraphStyleAttributeName: textStyle
+                ]
+                
+                var titleStringToDraw:NSString = NSString(string: storageBarValue.title)
+                var positionedTitleRect = CGRectMake(rect.origin.x, rect.origin.y + (self.frame.height/2 - CGFloat(titleFontSize)), rect.width, rect.height)
             
-            var titleStringToDraw:NSString = NSString(string: storageBarValue.title)
-            var positionedTitleRect = CGRectMake(rect.origin.x, rect.origin.y + (self.frame.height/2 - 8), rect.width, rect.height)
-            
-            titleStringToDraw.drawInRect(positionedTitleRect, withAttributes: textFontAttributes)
+                var titleWidth = countElements(storageBarValue.title) * Int(titleFontSize/2)
+                
+                amountOfLineBreaks = Int(ceil(Float(titleWidth) / Float(rect.width)))
+                
+                // Only display the title if there are less than 4 line breaks
+                if amountOfLineBreaks < 4 {
+                    titleStringToDraw.drawInRect(positionedTitleRect, withAttributes: textFontAttributes)
+                }
+            }
         }
         
-        // Draw value
-        if let actualFont = fontValue {
-            let textFontAttributes = [
-                NSFontAttributeName: actualFont,
-                NSForegroundColorAttributeName: textColor,
-                NSParagraphStyleAttributeName: textStyle
-            ]
-        
-            // Display the unit if its given
-            var unitOfValue = self.unit ?? ""
-            var valueStringToDraw:NSString = NSString(string: "\(storageBarValue.value) \(unitOfValue)")
-            var positionedValueRect = CGRectMake(rect.origin.x, rect.origin.y + (self.frame.height/2 + 2), rect.width, rect.height)
+        if displayValue {
+            if let actualFont = fontValue {
+                let textFontAttributes = [
+                    NSFontAttributeName: actualFont,
+                    NSForegroundColorAttributeName: textColor,
+                    NSParagraphStyleAttributeName: textStyle
+                ]
+                
+                // Amount of linebreaks the title will have
+                var lineBreaks = amountOfLineBreaks ?? ((displayTitle) ? 2 : 0)
+                var titleValuePadding = 2.0
+                
+                // Depending on the amount of line breaks the title has we need to calculate an offset for the y position
+                var calculatedOffsetY = (self.frame.height/2 - CGFloat(titleFontSize) + (CGFloat(lineBreaks) * CGFloat(titleFontSize + titleValuePadding)))
             
-            valueStringToDraw.drawInRect(positionedValueRect, withAttributes: textFontAttributes)
+                // Display the unit if its given
+                var unitOfValue = self.unit ?? ""
+                var valueStringToDraw:NSString = NSString(string: "\(numberFormatter.stringFromNumber(NSNumber(float:storageBarValue.value))!) \(unitOfValue)")
+                var positionedValueRect = CGRectMake(rect.origin.x, rect.origin.y + calculatedOffsetY, rect.width, rect.height)
+                
+                if lineBreaks < 4 {
+                    valueStringToDraw.drawInRect(positionedValueRect, withAttributes: textFontAttributes)
+                }
+            }
         }
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
     }
     
     func addStorageBarValue(storageBarValue:ROStorageBarValue) {

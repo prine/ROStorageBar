@@ -15,13 +15,22 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.4, title: "Offline Data", color: Helper.colorFromHexString("#FFABAB")))
-        storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.2, title: "Favorites", color: Helper.colorFromHexString("#FFDAAB")))
+        storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.2, title: "Offline Data", color: Helper.colorFromHexString("#FFABAB")))
+        storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.15, title: "Favorites", color: Helper.colorFromHexString("#FFD29B")))
         storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.3, title: "Test", color: Helper.colorFromHexString("#c3c3c3")))
         storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.8, title: "Free", color: Helper.colorFromHexString("#A8DBA8")))
         
         storageBar.unit = "GB"
-        storageBar.displayInfos = true // Default value would anyway be true
+        storageBar.displayTitle = true // Default value would anyway be true
+        storageBar.displayValue = true // Default value would anyway be true
+        storageBar.titleFontSize = 10.0
+        storageBar.valueFontSize = 10.0
+        
+        var numberFormatter = NSNumberFormatter()
+        numberFormatter.maximumFractionDigits = 2
+        numberFormatter.minimumIntegerDigits = 1
+        
+        storageBar.numberFormatter = numberFormatter
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {

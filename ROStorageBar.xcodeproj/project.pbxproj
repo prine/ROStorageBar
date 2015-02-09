@@ -415,6 +415,7 @@
 				CB0D1AB61A812C3500FC80A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB0D1AB71A812C3500FC80A8 /* Build configuration list for PBXNativeTarget "ROStorageBarTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +424,7 @@
 				CB0D1AB91A812C3500FC80A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
