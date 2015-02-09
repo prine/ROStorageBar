@@ -12,6 +12,7 @@ class ROStorageBar : UIView {
     
     private var storageBarValues = [ROStorageBarValue]()
     private var totalSum:Float = 0.0
+    private var height:CGFloat!
     
     var borderWidth:Float = 1.0
     var borderColor:UIColor = UIColor.darkGrayColor()
@@ -19,6 +20,7 @@ class ROStorageBar : UIView {
     var valueFontSize = 10.0
     var displayTitle:Bool = true
     var displayValue:Bool = true
+    var displayCaption:Bool = false
     var numberFormatter:NSNumberFormatter
     var unit:String?
     
@@ -42,7 +44,15 @@ class ROStorageBar : UIView {
     
     override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
+
+        // Depending if the captions should be drawn or not set a different height
+        height = displayCaption ? frame.height/2 : frame.height
+        
         drawStorageRects(context)
+        
+        if displayCaption {
+            drawCaption(context)
+        }
     }
     
     func drawStorageRects(context:CGContext) {
@@ -56,7 +66,7 @@ class ROStorageBar : UIView {
         for storageBarValue in storageBarValues {
             var color = storageBarValue.color.CGColor
             
-            let height:CGFloat = self.frame.height - 2 * CGFloat(borderWidth)
+            let height:CGFloat = self.height - 2 * CGFloat(borderWidth)
             let rectangle = CGRectMake(CGFloat(currentX), CGFloat(borderWidth), CGFloat(storageBarValue.value * scale),height)
             
             CGContextSetStrokeColorWithColor(context, borderColor.CGColor)
@@ -91,9 +101,9 @@ class ROStorageBar : UIView {
                 ]
                 
                 var titleStringToDraw:NSString = NSString(string: storageBarValue.title)
-                var positionedTitleRect = CGRectMake(rect.origin.x, rect.origin.y + (self.frame.height/2 - CGFloat(titleFontSize)), rect.width, rect.height)
+                var positionedTitleRect = CGRectMake(rect.origin.x, rect.origin.y + (self.height/2 - CGFloat(titleFontSize)), rect.width, rect.height)
             
-                var titleWidth = countElements(storageBarValue.title) * Int(titleFontSize/2)
+                var titleWidth = countElements(storageBarValue.title) * (Int(titleFontSize/2)+1)
                 
                 amountOfLineBreaks = Int(ceil(Float(titleWidth) / Float(rect.width)))
                 
@@ -117,7 +127,7 @@ class ROStorageBar : UIView {
                 var titleValuePadding = 2.0
                 
                 // Depending on the amount of line breaks the title has we need to calculate an offset for the y position
-                var calculatedOffsetY = (self.frame.height/2 - CGFloat(titleFontSize) + (CGFloat(lineBreaks) * CGFloat(titleFontSize + titleValuePadding)))
+                var calculatedOffsetY = (self.height/2 - CGFloat(titleFontSize) + (CGFloat(lineBreaks) * CGFloat(titleFontSize + titleValuePadding)))
             
                 // Display the unit if its given
                 var unitOfValue = self.unit ?? ""
@@ -128,6 +138,69 @@ class ROStorageBar : UIView {
                     valueStringToDraw.drawInRect(positionedValueRect, withAttributes: textFontAttributes)
                 }
             }
+        }
+    }
+    
+    func drawCaption(context:CGContext) {
+        
+        var offsetToBar:CGFloat = 10.0
+        var offsetToRectangle:CGFloat = 5.0
+        var offsetToTitle:CGFloat = 13.0
+        var widthText:CGFloat = 80.0
+        var heightText:CGFloat = 15.0
+        var posX:CGFloat = 0.0
+        var posY:CGFloat = self.height + offsetToBar
+        var sizeRect:CGFloat = 10.0
+        
+        var offsetWidth:CGFloat = 100.0
+        
+        // Font settings
+        let fontTitle = UIFont(name: "Helvetica Bold", size: CGFloat(self.titleFontSize))
+        let fontValue = UIFont(name: "Helvetica Light", size: CGFloat(self.valueFontSize))
+        
+        let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as NSMutableParagraphStyle
+        textStyle.alignment = NSTextAlignment.Left
+        let textColor = UIColor.blackColor()
+        
+        for storageBarValue in storageBarValues {
+            var rectangle = CGRectMake(posX, posY, sizeRect, sizeRect)
+            
+            CGContextAddRect(context, rectangle)
+            CGContextSetFillColorWithColor(context, storageBarValue.color.CGColor)
+            CGContextFillRect(context, rectangle)
+            
+            var titleWidth = countElements(storageBarValue.title) * Int(titleFontSize/2)
+            
+            // Title drawing
+            if let actualFont = fontTitle {
+                let textFontAttributes = [
+                    NSFontAttributeName: actualFont,
+                    NSForegroundColorAttributeName: textColor,
+                    NSParagraphStyleAttributeName: textStyle
+                ]
+            
+                var titleRect = CGRectMake(posX + sizeRect + offsetToRectangle, posY, widthText, heightText)
+                var titleStringToDraw:NSString = NSString(string: storageBarValue.title)
+                titleStringToDraw.drawInRect(titleRect, withAttributes: textFontAttributes)
+            }
+        
+            // Value drawing
+            if let actualFont = fontValue {
+                let textFontAttributes = [
+                    NSFontAttributeName: actualFont,
+                    NSForegroundColorAttributeName: textColor,
+                    NSParagraphStyleAttributeName: textStyle
+                ]
+            
+                var valueRect = CGRectMake(posX + sizeRect + offsetToRectangle, posY + offsetToTitle, widthText, heightText)
+                var unitOfValue = self.unit ?? ""
+                var valueStringToDraw:NSString = NSString(string: "\(numberFormatter.stringFromNumber(NSNumber(float:storageBarValue.value))!) \(unitOfValue)")
+            
+                valueStringToDraw.drawInRect(valueRect, withAttributes: textFontAttributes)
+            }
+            
+            posX += offsetWidth
+            
         }
     }
     
