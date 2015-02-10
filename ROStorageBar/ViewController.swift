@@ -22,8 +22,8 @@ class ViewController: UIViewController {
         storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.6, title: "Backups", color: Helper.colorFromHexString("#A8DBA8")))
         
         storageBar.unit = "GB"
-        storageBar.displayTitle = false // Default value would anyway be true
-        storageBar.displayValue = false // Default value would anyway be true
+        storageBar.displayTitle = false
+        storageBar.displayValue = false
         storageBar.displayCaption = true
         storageBar.titleFontSize = 10.0
         storageBar.valueFontSize = 10.0
@@ -44,7 +44,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

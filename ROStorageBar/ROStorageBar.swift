@@ -200,7 +200,6 @@ class ROStorageBar : UIView {
             }
             
             posX += offsetWidth
-            
         }
     }
     
@@ -212,6 +211,7 @@ class ROStorageBar : UIView {
     
     func emptyStorageBar() {
         self.storageBarValues.removeAll(keepCapacity: false)
+        totalSum = 0
     }
     
     struct ROStorageBarValue {
