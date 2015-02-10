@@ -1,7 +1,11 @@
 # ROStorageBar
 Dynamic Storage Bar (a là iTunes Usage Bar) written in Swift
 
-![Example](http://prine.ch//ROStorageBarExample_v1.0.1.png "Screenshot of the ROStorageBar")
+![Example](http://prine.ch//ROStorageBar.png "Screenshot of the ROStorageBar")
+
+It is also possible to add captions underneath the bar.
+
+![ExampleWithCaptions](http://prine.ch//ROStorageBar_caption.png "Screenshot of the ROStorageBar with Captions")
 
 ## How to use
 The usage is really straighforward. Include the ROStorageBar.swift and the Helper.swift file into your project. Create a UIView in the Storyboard and set the class to ROStorageBar.
@@ -19,6 +23,7 @@ override func viewDidLoad() {
     storageBar.unit = "GB"
     storageBar.displayTitle = true
     storageBar.displayValue = true
+    storageBar.displayCaptions = true // Here you can add the captions or not
     storageBar.titleFontSize = 10.0
     storageBar.valueFontSize = 10.0
     
@@ -30,7 +35,7 @@ override func viewDidLoad() {
 }
 ```
 
-The size of the ROStorageBar is defined by the size of the UIView. Therefore also AutoLayout is perfectly working with the ROStorageBar and the adaptation and rerendering is automatically handled by the Library itself.
+The size of the ROStorageBar is defined by the size of the UIView. Therefore also AutoLayout is perfectly working with the ROStorageBar and the adaptation and rerendering is automatically handled by the Library itself. If you have set the displayCaptions to true it does automatically split the view in half. It uses the upper half for the bar and the lower bar for the captions. If there aren't any captions it takes the full height of the UIView.
 
 ### Helper class
 The helper is only used for easier color creation and can be easily left out. I left it in because maybe someone else can also use the hex to UIColor conversion.
