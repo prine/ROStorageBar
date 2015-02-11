@@ -48,7 +48,7 @@ Here a short example:
 var color = UIColor(hex:"#A8DBA8")
 ```
 
-### License
+## License
 
 ```
 The MIT License (MIT)
