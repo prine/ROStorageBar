@@ -8,6 +8,18 @@
 
 import UIKit
 
+struct ROStorageBarValue {
+    var value:Float
+    var title:String
+    var color:UIColor
+    
+    init(value:Float, title:String, color:UIColor) {
+        self.value = value
+        self.title = title
+        self.color = color
+    }
+}
+
 class ROStorageBar : UIView {
     
     private var storageBarValues = [ROStorageBarValue]()
@@ -203,6 +215,12 @@ class ROStorageBar : UIView {
         }
     }
     
+    func add(value:Float, title:String, color:UIColor) {
+        storageBarValues.append(ROStorageBarValue(value: value, title: title, color: color))
+        self.totalSum += value
+        self.setNeedsDisplay()
+    }
+    
     func addStorageBarValue(storageBarValue:ROStorageBarValue) {
         storageBarValues.append(storageBarValue)
         self.totalSum += storageBarValue.value
@@ -212,18 +230,6 @@ class ROStorageBar : UIView {
     func emptyStorageBar() {
         self.storageBarValues.removeAll(keepCapacity: false)
         totalSum = 0
-    }
-    
-    struct ROStorageBarValue {
-        var value:Float
-        var title:String
-        var color:UIColor
-        
-        init(value:Float, title:String, color:UIColor) {
-            self.value = value
-            self.title = title
-            self.color = color
-        }
     }
 }
 
