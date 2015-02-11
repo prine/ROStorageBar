@@ -15,11 +15,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.2, title: "Apps", color: Helper.colorFromHexString("#FFABAB")))
-        storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.15, title: "Documents", color: Helper.colorFromHexString("#FFD29B")))
-        storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.21, title: "Photos", color: Helper.colorFromHexString("#DDEBF9")))
-        storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.3, title: "Movies", color: Helper.colorFromHexString("#c3c3c3")))
-        storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.6, title: "Backups", color: Helper.colorFromHexString("#A8DBA8")))
+        storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.2, title: "Apps", color: UIColor(hex:"#FFABAB")))
+        storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.15, title: "Documents", color: UIColor(hex:"#FFD29B")))
+        storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.21, title: "Photos", color: UIColor(hex:"#DDEBF9")))
+        storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.3, title: "Movies", color: UIColor(hex:"#c3c3c3")))
+        storageBar.addStorageBarValue(ROStorageBar.ROStorageBarValue(value: 0.6, title: "Backups", color: UIColor(hex:"#A8DBA8")))
         
         storageBar.unit = "GB"
         storageBar.displayTitle = false
