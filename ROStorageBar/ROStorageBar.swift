@@ -53,13 +53,13 @@ class ROStorageBar : UIView {
     var numberFormatter:NSNumberFormatter
     var unit:String?
     
-    override init() {
+    init() {
         // Initilaize the default number formatter
         numberFormatter = NSNumberFormatter()
         numberFormatter.minimumIntegerDigits = 1
         numberFormatter.maximumFractionDigits = 1
         
-        super.init()
+        super.init(frame: CGRectZero)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -115,7 +115,7 @@ class ROStorageBar : UIView {
         let fontTitle = UIFont(name: "Helvetica Bold", size: CGFloat(self.titleFontSize))
         let fontValue = UIFont(name: "Helvetica Light", size: CGFloat(self.valueFontSize))
         
-        let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as NSMutableParagraphStyle
+        let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         textStyle.alignment = NSTextAlignment.Center
         let textColor = UIColor.blackColor()
         
@@ -132,7 +132,7 @@ class ROStorageBar : UIView {
                 var titleStringToDraw:NSString = NSString(string: storageBarValue.title)
                 var positionedTitleRect = CGRectMake(rect.origin.x, rect.origin.y + (self.height/2 - CGFloat(titleFontSize)), rect.width, rect.height)
             
-                var titleWidth = countElements(storageBarValue.title) * (Int(titleFontSize/2)+1)
+                var titleWidth = count(storageBarValue.title) * (Int(titleFontSize/2)+1)
                 
                 amountOfLineBreaks = Int(ceil(Float(titleWidth) / Float(rect.width)))
                 
@@ -187,7 +187,7 @@ class ROStorageBar : UIView {
         let fontTitle = UIFont(name: "Helvetica Bold", size: CGFloat(self.titleFontSize))
         let fontValue = UIFont(name: "Helvetica Light", size: CGFloat(self.valueFontSize))
         
-        let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as NSMutableParagraphStyle
+        let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         textStyle.alignment = NSTextAlignment.Left
         let textColor = UIColor.blackColor()
         
@@ -198,7 +198,7 @@ class ROStorageBar : UIView {
             CGContextSetFillColorWithColor(context, storageBarValue.color.CGColor)
             CGContextFillRect(context, rectangle)
             
-            var titleWidth = countElements(storageBarValue.title) * Int(titleFontSize/2)
+            var titleWidth = count(storageBarValue.title) * Int(titleFontSize/2)
             
             // Title drawing
             if let actualFont = fontTitle {
@@ -266,7 +266,7 @@ extension UIColor {
             let scanner = NSScanner(string: hex)
             var hexValue: CUnsignedLongLong = 0
             if scanner.scanHexLongLong(&hexValue) {
-                switch (countElements(hex)) {
+                switch (count(hex)) {
                 case 3:
                     red   = CGFloat((hexValue & 0xF00) >> 8)       / 15.0
                     green = CGFloat((hexValue & 0x0F0) >> 4)       / 15.0
