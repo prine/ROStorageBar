@@ -13,7 +13,10 @@
 		CB0D1AA21A812C3500FC80A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0D1AA11A812C3500FC80A8 /* Images.xcassets */; };
 		CB0D1AA51A812C3500FC80A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0D1AA31A812C3500FC80A8 /* LaunchScreen.xib */; };
 		CB0D1AB11A812C3500FC80A8 /* ROStorageBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0D1AB01A812C3500FC80A8 /* ROStorageBarTests.swift */; };
-		CB0D1ABB1A812C5800FC80A8 /* ROStorageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0D1ABA1A812C5800FC80A8 /* ROStorageBar.swift */; };
+		CB6DB6471B5558C200512EFC /* ROStorageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DB6461B5558C200512EFC /* ROStorageBar.swift */; };
+		CB6DB6491B5559A500512EFC /* ROStorageBar.podspec in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB6481B5559A500512EFC /* ROStorageBar.podspec */; };
+		CB6DB64C1B5559D500512EFC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB64A1B5559D500512EFC /* LICENSE */; };
+		CB6DB64D1B5559D500512EFC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CB6DB64B1B5559D500512EFC /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,10 @@
 		CB0D1AAA1A812C3500FC80A8 /* ROStorageBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROStorageBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0D1AAF1A812C3500FC80A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB0D1AB01A812C3500FC80A8 /* ROStorageBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROStorageBarTests.swift; sourceTree = "<group>"; };
-		CB0D1ABA1A812C5800FC80A8 /* ROStorageBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ROStorageBar.swift; sourceTree = "<group>"; };
+		CB6DB6461B5558C200512EFC /* ROStorageBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ROStorageBar.swift; path = Source/ROStorageBar.swift; sourceTree = SOURCE_ROOT; };
+		CB6DB6481B5559A500512EFC /* ROStorageBar.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ROStorageBar.podspec; sourceTree = SOURCE_ROOT; };
+		CB6DB64A1B5559D500512EFC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		CB6DB64B1B5559D500512EFC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +85,12 @@
 		CB0D1A971A812C3500FC80A8 /* ROStorageBar */ = {
 			isa = PBXGroup;
 			children = (
+				CB6DB64A1B5559D500512EFC /* LICENSE */,
+				CB6DB64B1B5559D500512EFC /* README.md */,
+				CB6DB6481B5559A500512EFC /* ROStorageBar.podspec */,
 				CB0D1A9A1A812C3500FC80A8 /* AppDelegate.swift */,
 				CB0D1A9C1A812C3500FC80A8 /* ViewController.swift */,
-				CB0D1ABA1A812C5800FC80A8 /* ROStorageBar.swift */,
+				CB6DB6461B5558C200512EFC /* ROStorageBar.swift */,
 				CB0D1A9E1A812C3500FC80A8 /* Main.storyboard */,
 				CB0D1AA11A812C3500FC80A8 /* Images.xcassets */,
 				CB0D1AA31A812C3500FC80A8 /* LaunchScreen.xib */,
@@ -196,8 +205,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB0D1AA01A812C3500FC80A8 /* Main.storyboard in Resources */,
+				CB6DB6491B5559A500512EFC /* ROStorageBar.podspec in Resources */,
 				CB0D1AA51A812C3500FC80A8 /* LaunchScreen.xib in Resources */,
 				CB0D1AA21A812C3500FC80A8 /* Images.xcassets in Resources */,
+				CB6DB64C1B5559D500512EFC /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,9 +226,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB6DB6471B5558C200512EFC /* ROStorageBar.swift in Sources */,
 				CB0D1A9D1A812C3500FC80A8 /* ViewController.swift in Sources */,
+				CB6DB64D1B5559D500512EFC /* README.md in Sources */,
 				CB0D1A9B1A812C3500FC80A8 /* AppDelegate.swift in Sources */,
-				CB0D1ABB1A812C5800FC80A8 /* ROStorageBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
