@@ -15,13 +15,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        storageBar.add(0.2, title: "Apps", color: UIColor(hex:"#FFABAB"))
-        storageBar.add(0.15, title: "Documents", color: UIColor(hex:"#FFD29B"))
-        storageBar.add(0.21, title: "Photos", color: UIColor(hex:"#DDEBF9"))
-        storageBar.add(0.3, title: "Movies", color: UIColor(hex:"#c3c3c3"))
+        storageBar.add(0.2, title: "Apps", color: UIColor.blackColor())
+        storageBar.add(0.15, title: "Documents", color: UIColor.orangeColor())
+        storageBar.add(0.21, title: "Photos", color: UIColor.purpleColor())
+        storageBar.add(0.3, title: "Movies", color: UIColor.redColor())
         
         // Or if you want to use directly the struct to add an item
-        storageBar.addStorageBarValue(ROStorageBarValue(value: 0.6, title: "Backups", color: UIColor(hex:"#A8DBA8")))
+        storageBar.addStorageBarValue(ROStorageBarValue(value: 0.6, title: "Backups", color: UIColor.greenColor()))
         
         storageBar.unit = "GB"
         storageBar.displayTitle = false
