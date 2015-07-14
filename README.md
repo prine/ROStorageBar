@@ -96,7 +96,3 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ## Author
 
 Robin Oster, robin.oster@rascor.com
-
-## License
-
-ROStorageBar is available under the MIT license. See the LICENSE file for more info.
