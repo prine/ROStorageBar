@@ -16,7 +16,6 @@
 		CB6DB6471B5558C200512EFC /* ROStorageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DB6461B5558C200512EFC /* ROStorageBar.swift */; };
 		CB6DB6491B5559A500512EFC /* ROStorageBar.podspec in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB6481B5559A500512EFC /* ROStorageBar.podspec */; };
 		CB6DB64C1B5559D500512EFC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB64A1B5559D500512EFC /* LICENSE */; };
-		CB6DB64D1B5559D500512EFC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CB6DB64B1B5559D500512EFC /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,7 +167,9 @@
 		CB0D1A8D1A812C3500FC80A8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Robin Oster";
 				TargetAttributes = {
 					CB0D1A941A812C3500FC80A8 = {
@@ -228,7 +229,6 @@
 			files = (
 				CB6DB6471B5558C200512EFC /* ROStorageBar.swift in Sources */,
 				CB0D1A9D1A812C3500FC80A8 /* ViewController.swift in Sources */,
-				CB6DB64D1B5559D500512EFC /* README.md in Sources */,
 				CB0D1A9B1A812C3500FC80A8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +291,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -356,6 +357,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ROStorageBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.prine.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -366,6 +368,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ROStorageBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.prine.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -384,6 +387,7 @@
 				);
 				INFOPLIST_FILE = ROStorageBarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.prine.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ROStorageBar.app/ROStorageBar";
 			};
@@ -399,6 +403,7 @@
 				);
 				INFOPLIST_FILE = ROStorageBarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.prine.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ROStorageBar.app/ROStorageBar";
 			};

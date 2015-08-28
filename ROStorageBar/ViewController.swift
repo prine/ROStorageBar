@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         storageBar.titleFontSize = 10.0
         storageBar.valueFontSize = 10.0
         
-        var numberFormatter = NSNumberFormatter()
+        let numberFormatter = NSNumberFormatter()
         numberFormatter.maximumFractionDigits = 2
         numberFormatter.minimumIntegerDigits = 1
         
