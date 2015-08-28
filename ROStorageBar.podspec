@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
 s.name             = "ROStorageBar"
-s.version          = "1.0.3"
+s.version          = "1.0.4"
 s.summary          = "Dynamic Storage Bar (a là iTunes Usage Bar) written in Swift"
 s.description      = <<-DESC
 ROStorageBar is a library which provides an easy way to create an UIView which looks
