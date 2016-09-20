@@ -15,13 +15,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        storageBar.add(0.2, title: "Apps", color: UIColor.blackColor())
-        storageBar.add(0.15, title: "Documents", color: UIColor.orangeColor())
-        storageBar.add(0.21, title: "Photos", color: UIColor.purpleColor())
-        storageBar.add(0.3, title: "Movies", color: UIColor.redColor())
+        storageBar.add(0.2, title: "Apps", color: UIColor.black)
+        storageBar.add(0.15, title: "Documents", color: UIColor.orange)
+        storageBar.add(0.21, title: "Photos", color: UIColor.purple)
+        storageBar.add(0.3, title: "Movies", color: UIColor.red)
         
         // Or if you want to use directly the struct to add an item
-        storageBar.addStorageBarValue(ROStorageBarValue(value: 0.6, title: "Backups", color: UIColor.greenColor()))
+        storageBar.addStorageBarValue(ROStorageBarValue(value: 0.6, title: "Backups", color: UIColor.green))
         
         storageBar.unit = "GB"
         storageBar.displayTitle = false
@@ -30,14 +30,14 @@ class ViewController: UIViewController {
         storageBar.titleFontSize = 10.0
         storageBar.valueFontSize = 10.0
         
-        let numberFormatter = NSNumberFormatter()
+        let numberFormatter = NumberFormatter()
         numberFormatter.maximumFractionDigits = 2
         numberFormatter.minimumIntegerDigits = 1
         
         storageBar.numberFormatter = numberFormatter
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         // Force the redraw. Otherwise the string is not correctly displayed
         storageBar.setNeedsDisplay()
     }

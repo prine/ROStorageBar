@@ -24,6 +24,17 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 public struct ROStorageBarValue {
     public var value:Float
@@ -37,42 +48,42 @@ public struct ROStorageBarValue {
     }
 }
 
-public class ROStorageBar : UIView {
+open class ROStorageBar : UIView {
     
-    private var storageBarValues = [ROStorageBarValue]()
-    private var totalSum:Float = 0.0
-    private var height:CGFloat!
+    fileprivate var storageBarValues = [ROStorageBarValue]()
+    fileprivate var totalSum:Float = 0.0
+    fileprivate var height:CGFloat!
     
-    public var borderWidth:Float = 1.0
-    public var borderColor:UIColor = UIColor.darkGrayColor()
-    public var titleFontSize = 10.0
-    public var valueFontSize = 10.0
-    public var displayTitle:Bool = true
-    public var displayValue:Bool = true
-    public var displayCaption:Bool = false
-    public var numberFormatter:NSNumberFormatter
-    public var unit:String?
+    open var borderWidth:Float = 1.0
+    open var borderColor:UIColor = UIColor.darkGray
+    open var titleFontSize = 10.0
+    open var valueFontSize = 10.0
+    open var displayTitle:Bool = true
+    open var displayValue:Bool = true
+    open var displayCaption:Bool = false
+    open var numberFormatter:NumberFormatter
+    open var unit:String?
     
     public init() {
         // Initilaize the default number formatter
-        numberFormatter = NSNumberFormatter()
+        numberFormatter = NumberFormatter()
         numberFormatter.minimumIntegerDigits = 1
         numberFormatter.maximumFractionDigits = 1
         
         // TODO: Check if this is a correct solution
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
     }
     
     required public init?(coder aDecoder: NSCoder) {
         // Initilaize the default number formatter
-        numberFormatter = NSNumberFormatter()
+        numberFormatter = NumberFormatter()
         numberFormatter.minimumIntegerDigits = 1
         numberFormatter.maximumFractionDigits = 1
         
         super.init(coder:aDecoder)
     }
     
-    override public  func drawRect(rect: CGRect) {
+    override open  func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         
         // Depending if the captions should be drawn or not set a different height
@@ -85,24 +96,24 @@ public class ROStorageBar : UIView {
         }
     }
     
-    func drawStorageRects(context:CGContext) {
+    func drawStorageRects(_ context:CGContext) {
         
-        CGContextSetLineWidth(context, CGFloat(borderWidth))
+        context.setLineWidth(CGFloat(borderWidth))
         
         var currentX:Float = borderWidth
         let scale = (Float(self.frame.width) - 2 * borderWidth) / totalSum
         
         for storageBarValue in storageBarValues {
-            let color = storageBarValue.color.CGColor
+            let color = storageBarValue.color.cgColor
             
             let height:CGFloat = self.height - 2 * CGFloat(borderWidth)
-            let rectangle = CGRectMake(CGFloat(currentX), CGFloat(borderWidth), CGFloat(storageBarValue.value * scale),height)
+            let rectangle = CGRect(x: CGFloat(currentX), y: CGFloat(borderWidth), width: CGFloat(storageBarValue.value * scale),height: height)
             
-            CGContextSetStrokeColorWithColor(context, borderColor.CGColor)
-            CGContextAddRect(context, rectangle)
-            CGContextStrokePath(context)
-            CGContextSetFillColorWithColor(context, color)
-            CGContextFillRect(context, rectangle)
+            context.setStrokeColor(borderColor.cgColor)
+            context.addRect(rectangle)
+            context.strokePath()
+            context.setFillColor(color)
+            context.fill(rectangle)
             
             currentX += (storageBarValue.value * scale)
             
@@ -110,14 +121,14 @@ public class ROStorageBar : UIView {
         }
     }
     
-    func drawString(storageBarValue:ROStorageBarValue, rect:CGRect) {
+    func drawString(_ storageBarValue:ROStorageBarValue, rect:CGRect) {
         
         let fontTitle = UIFont(name: "Helvetica Bold", size: CGFloat(self.titleFontSize))
         let fontValue = UIFont(name: "Helvetica Light", size: CGFloat(self.valueFontSize))
         
-        let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
-        textStyle.alignment = NSTextAlignment.Center
-        let textColor = UIColor.blackColor()
+        let textStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        textStyle.alignment = NSTextAlignment.center
+        let textColor = UIColor.black
         
         var amountOfLineBreaks:Int?
         
@@ -130,7 +141,7 @@ public class ROStorageBar : UIView {
                 ]
                 
                 let titleStringToDraw:NSString = NSString(string: storageBarValue.title)
-                let positionedTitleRect = CGRectMake(rect.origin.x, rect.origin.y + (self.height/2 - CGFloat(titleFontSize)), rect.width, rect.height)
+                let positionedTitleRect = CGRect(x: rect.origin.x, y: rect.origin.y + (self.height/2 - CGFloat(titleFontSize)), width: rect.width, height: rect.height)
                 
                 let titleWidth = storageBarValue.title.characters.count * (Int(titleFontSize/2)+1)
                 
@@ -138,7 +149,7 @@ public class ROStorageBar : UIView {
                 
                 // Only display the title if there are less than 4 line breaks
                 if amountOfLineBreaks < 4 {
-                    titleStringToDraw.drawInRect(positionedTitleRect, withAttributes: textFontAttributes)
+                    titleStringToDraw.draw(in: positionedTitleRect, withAttributes: textFontAttributes)
                 }
             }
         }
@@ -160,17 +171,17 @@ public class ROStorageBar : UIView {
                 
                 // Display the unit if its given
                 let unitOfValue = self.unit ?? ""
-                let valueStringToDraw:NSString = NSString(string: "\(numberFormatter.stringFromNumber(NSNumber(float:storageBarValue.value))!) \(unitOfValue)")
-                let positionedValueRect = CGRectMake(rect.origin.x, rect.origin.y + calculatedOffsetY, rect.width, rect.height)
+                let valueStringToDraw:NSString = NSString(string: "\(numberFormatter.string(from: NSNumber(value: storageBarValue.value as Float))!) \(unitOfValue)")
+                let positionedValueRect = CGRect(x: rect.origin.x, y: rect.origin.y + calculatedOffsetY, width: rect.width, height: rect.height)
                 
                 if lineBreaks < 4 {
-                    valueStringToDraw.drawInRect(positionedValueRect, withAttributes: textFontAttributes)
+                    valueStringToDraw.draw(in: positionedValueRect, withAttributes: textFontAttributes)
                 }
             }
         }
     }
     
-    func drawCaption(context:CGContext) {
+    func drawCaption(_ context:CGContext) {
         
         let offsetToBar:CGFloat = 10.0
         let offsetToRectangle:CGFloat = 5.0
@@ -187,16 +198,16 @@ public class ROStorageBar : UIView {
         let fontTitle = UIFont(name: "Helvetica Bold", size: CGFloat(self.titleFontSize))
         let fontValue = UIFont(name: "Helvetica Light", size: CGFloat(self.valueFontSize))
         
-        let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
-        textStyle.alignment = NSTextAlignment.Left
-        let textColor = UIColor.blackColor()
+        let textStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        textStyle.alignment = NSTextAlignment.left
+        let textColor = UIColor.black
         
         for storageBarValue in storageBarValues {
-            let rectangle = CGRectMake(posX, posY, sizeRect, sizeRect)
+            let rectangle = CGRect(x: posX, y: posY, width: sizeRect, height: sizeRect)
             
-            CGContextAddRect(context, rectangle)
-            CGContextSetFillColorWithColor(context, storageBarValue.color.CGColor)
-            CGContextFillRect(context, rectangle)
+            context.addRect(rectangle)
+            context.setFillColor(storageBarValue.color.cgColor)
+            context.fill(rectangle)
             
             // Title drawing
             if let actualFont = fontTitle {
@@ -206,9 +217,9 @@ public class ROStorageBar : UIView {
                     NSParagraphStyleAttributeName: textStyle
                 ]
                 
-                let titleRect = CGRectMake(posX + sizeRect + offsetToRectangle, posY, widthText, heightText)
+                let titleRect = CGRect(x: posX + sizeRect + offsetToRectangle, y: posY, width: widthText, height: heightText)
                 let titleStringToDraw:NSString = NSString(string: storageBarValue.title)
-                titleStringToDraw.drawInRect(titleRect, withAttributes: textFontAttributes)
+                titleStringToDraw.draw(in: titleRect, withAttributes: textFontAttributes)
             }
             
             // Value drawing
@@ -219,31 +230,31 @@ public class ROStorageBar : UIView {
                     NSParagraphStyleAttributeName: textStyle
                 ]
                 
-                let valueRect = CGRectMake(posX + sizeRect + offsetToRectangle, posY + offsetToTitle, widthText, heightText)
+                let valueRect = CGRect(x: posX + sizeRect + offsetToRectangle, y: posY + offsetToTitle, width: widthText, height: heightText)
                 let unitOfValue = self.unit ?? ""
-                let valueStringToDraw:NSString = NSString(string: "\(numberFormatter.stringFromNumber(NSNumber(float:storageBarValue.value))!) \(unitOfValue)")
+                let valueStringToDraw:NSString = NSString(string: "\(numberFormatter.string(from: NSNumber(value: storageBarValue.value as Float))!) \(unitOfValue)")
                 
-                valueStringToDraw.drawInRect(valueRect, withAttributes: textFontAttributes)
+                valueStringToDraw.draw(in: valueRect, withAttributes: textFontAttributes)
             }
             
             posX += offsetWidth
         }
     }
     
-    public func add(value:Float, title:String, color:UIColor) {
+    open func add(_ value:Float, title:String, color:UIColor) {
         storageBarValues.append(ROStorageBarValue(value: value, title: title, color: color))
         self.totalSum += value
         self.setNeedsDisplay()
     }
     
-    public func addStorageBarValue(storageBarValue:ROStorageBarValue) {
+    open func addStorageBarValue(_ storageBarValue:ROStorageBarValue) {
         storageBarValues.append(storageBarValue)
         self.totalSum += storageBarValue.value
         self.setNeedsDisplay()
     }
     
-    public func emptyStorageBar() {
-        self.storageBarValues.removeAll(keepCapacity: false)
+    open func emptyStorageBar() {
+        self.storageBarValues.removeAll(keepingCapacity: false)
         totalSum = 0
     }
 }
