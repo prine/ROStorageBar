@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
     spec.version      = '2.1.0'
     spec.license      = { :type => 'MIT' }
     spec.homepage     = 'https://github.com/prine/ROStorageBar'
-    spec.authors      = { 'Robin Oster' => 'robin.oster@rascor.com' }
+    spec.authors      = { 'Robin Oster' => 'prine.dev@gmail.com' }
     spec.summary      = 'Dynamic Storage Bar (a là iTunes Usage Bar) written in Swift'
     spec.source       = { :git => 'https://github.com/prine/ROStorageBar.git', :tag => '2.1.0' }
     spec.source_files = 'Source/**/*'
