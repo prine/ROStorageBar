@@ -33,40 +33,32 @@ The usage is really straighforward. Create a UIView in the Storyboard and set th
 In the viewDidLoad Method you can add ROStorageBarValues with the following code:
 ```Swift
 override func viewDidLoad() {
-super.viewDidLoad()
+    super.viewDidLoad()
 
-storageBar.add(0.2, title: "Apps", color: UIColor(hex:"#FFABAB"))
-storageBar.add(0.15, title: "Documents", color: UIColor(hex:"#FFD29B"))
-storageBar.add(0.21, title: "Photos", color: UIColor(hex:"#DDEBF9"))
-storageBar.add(0.3, title: "Movies", color: UIColor(hex:"#c3c3c3"))
+    storageBar.add(0.2, title: "Apps", color: UIColor(hex:"#FFABAB"))
+    storageBar.add(0.15, title: "Documents", color: UIColor(hex:"#FFD29B"))
+    storageBar.add(0.21, title: "Photos", color: UIColor(hex:"#DDEBF9"))
+    storageBar.add(0.3, title: "Movies", color: UIColor(hex:"#c3c3c3"))
 
-// Or if you want to use directly the struct to add an item
-storageBar.addStorageBarValue(ROStorageBarValue(value: 0.6, title: "Backups", color: UIColor(hex:"#A8DBA8")))
+    // Or if you want to use directly the struct to add an item
+    storageBar.addStorageBarValue(ROStorageBarValue(value: 0.6, title: "Backups", color: UIColor(hex:"#A8DBA8")))
 
-storageBar.unit = "GB"
-storageBar.displayTitle = false
-storageBar.displayValue = false
-storageBar.displayCaption = true
-storageBar.titleFontSize = 10.0
-storageBar.valueFontSize = 10.0
+    storageBar.unit = "GB"
+    storageBar.displayTitle = false
+    storageBar.displayValue = false
+    storageBar.displayCaption = true
+    storageBar.titleFontSize = 10.0
+    storageBar.valueFontSize = 10.0
 
-var numberFormatter = NSNumberFormatter()
-numberFormatter.maximumFractionDigits = 2
-numberFormatter.minimumIntegerDigits = 1
+    var numberFormatter = NSNumberFormatter()
+    numberFormatter.maximumFractionDigits = 2
+    numberFormatter.minimumIntegerDigits = 1
 
-storageBar.numberFormatter = numberFormatter
+    storageBar.numberFormatter = numberFormatter
 }
 ```
 
 The size of the ROStorageBar is defined by the size of the UIView. Therefore also AutoLayout is perfectly working with the ROStorageBar and the adaptation and rerendering is automatically handled by the Library itself. If you have set the displayCaptions to true it does automatically split the view in half. It uses the upper half for the bar and the lower bar for the captions. If there aren't any captions it takes the full height of the UIView.
-
-### UIColor Extension
-The extension is only used for easier color creation and can be easily left out. I left it in because maybe someone else can also use the hex to UIColor conversion.
-
-Here a short example:
-```Swift
-var color = UIColor(hex:"#A8DBA8")
-```
 
 ## License
 

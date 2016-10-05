@@ -3,7 +3,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2015 Robin Oster (http://prine.ch)
+// Copyright (c) 2016 Robin Oster (http://prine.ch)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -70,7 +70,6 @@ open class ROStorageBar : UIView {
         numberFormatter.minimumIntegerDigits = 1
         numberFormatter.maximumFractionDigits = 1
         
-        // TODO: Check if this is a correct solution
         super.init(frame: CGRect.zero)
     }
     
