@@ -12,11 +12,11 @@ ROStorageBar is a library which provides an easy way to create an UIView which l
 similar like the iTunes Usage Bar.
 
 
-![Example](http://prine.ch//ROStorageBar.png "Screenshot of the ROStorageBar")
+![Example](http://prine.ch/external/ROStorageBar/storagebar_1.png "Screenshot of the ROStorageBar")
 
 It is also possible to add captions underneath the bar.
 
-![ExampleWithCaptions](http://prine.ch//ROStorageBar_caption.png "Screenshot of the ROStorageBar with Captions")
+![ExampleWithCaptions](http://prine.ch/external/ROStorageBar/storagebar_2.png "Screenshot of the ROStorageBar with Captions")
 
 ## Installation
 
