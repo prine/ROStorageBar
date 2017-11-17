@@ -9,12 +9,12 @@
 
 Pod::Spec.new do |spec|
     spec.name         = 'ROStorageBar'
-    spec.version      = '2.1.2'
+    spec.version      = '2.1.3'
     spec.license      = { :type => 'MIT' }
     spec.homepage     = 'https://github.com/prine/ROStorageBar'
     spec.authors      = { 'Robin Oster' => 'prine.dev@gmail.com' }
     spec.summary      = 'Dynamic Storage Bar (a là iTunes Usage Bar) written in Swift'
-    spec.source       = { :git => 'https://github.com/prine/ROStorageBar.git', :tag => '2.1.2' }
+    spec.source       = { :git => 'https://github.com/prine/ROStorageBar.git', :tag => '2.1.3' }
     spec.source_files = 'Source/**/*'
     spec.framework    = 'SystemConfiguration'
     spec.ios.deployment_target  = '8.4'

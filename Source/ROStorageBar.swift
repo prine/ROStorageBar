@@ -142,7 +142,7 @@ open class ROStorageBar : UIView {
                 let titleStringToDraw:NSString = NSString(string: storageBarValue.title)
                 let positionedTitleRect = CGRect(x: rect.origin.x, y: rect.origin.y + (self.height/2 - CGFloat(titleFontSize)), width: rect.width, height: rect.height)
                 
-                let titleWidth = storageBarValue.title.characters.count * (Int(titleFontSize/2)+1)
+                let titleWidth = storageBarValue.title.count * (Int(titleFontSize/2)+1)
                 
                 amountOfLineBreaks = Int(ceil(Float(titleWidth) / Float(rect.width)))
                 
